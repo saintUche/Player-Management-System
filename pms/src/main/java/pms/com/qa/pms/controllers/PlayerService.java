@@ -1,4 +1,4 @@
-package com.qa.controllers;
+package pms.com.qa.pms.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,10 +8,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qa.DTOs.PlayerDTO;
-import com.qa.exceptions.PlayerNotFound;
-import com.qa.models.Player;
-import com.qa.repos.PlayerRepository;
+import pms.com.qa.pms.DTOs.PlayerDTO;
+import pms.com.qa.pms.exceptions.PlayerNotFound;
+import pms.com.qa.pms.models.Player;
+import pms.com.qa.pms.repos.PlayerRepository;
+
+
 
 @Service
 public class PlayerService {
