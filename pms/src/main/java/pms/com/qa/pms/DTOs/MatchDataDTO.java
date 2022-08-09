@@ -1,12 +1,11 @@
-package com.qa.DTOs;
+package pms.com.qa.pms.DTOs;
 
-
-import com.qa.models.Player;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pms.com.qa.pms.models.Player;
 
 @NoArgsConstructor
 @AllArgsConstructor

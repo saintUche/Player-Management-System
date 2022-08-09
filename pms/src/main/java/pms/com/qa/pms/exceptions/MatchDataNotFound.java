@@ -1,4 +1,4 @@
-package com.qa.exceptions;
+package pms.com.qa.pms.exceptions;
 
 import javax.persistence.EntityNotFoundException;
 

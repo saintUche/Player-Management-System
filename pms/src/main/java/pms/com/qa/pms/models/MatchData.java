@@ -1,4 +1,4 @@
-package com.qa.models;
+package pms.com.qa.pms.models;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
