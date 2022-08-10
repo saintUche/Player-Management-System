@@ -16,5 +16,7 @@ public interface FansRepository extends JpaRepository<Fans, Long> {
 
     @Query(value = "SELECT * FROM fans WHERE Player = ?1 Limit 1", nativeQuery = true)
     MatchData findMatchDataByPlayerID(Player player);
+
+    Fans findFansByPlayer(Player player);
 }
 

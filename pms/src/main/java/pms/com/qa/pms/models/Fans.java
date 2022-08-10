@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,15 +28,12 @@ public class Fans {
 
     @OneToOne(cascade = CascadeType.ALL, optional = true)
 	@JoinColumn(name="player", referencedColumnName="ID", nullable=true)
-    @NotNull(message="cannot be null")
 	private Player player; 
 
 	@Column(name="haters", nullable=false)
-	@NotNull(message="cannot be null2")
 	private int haters;
 
 	@Column(name="supporters", nullable=false)
-	@NotNull(message="cannot be null3")
 	private int supporters;
 
     
