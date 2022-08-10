@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import pms.com.qa.pms.DTOs.MatchDataDTO;
 import pms.com.qa.pms.models.MatchData;
+import pms.com.qa.pms.models.Player;
 
 @Service
 @RestController
@@ -39,7 +40,7 @@ public class MatchDataController {
 	}
 
 	@GetMapping("/matchData/search")
-	public MatchData search(@PathParam("playerId") String playerId) {
+	public MatchData search(@PathParam("playerId") Player playerId) {
 		if (playerId != null) {
 			return service.searchPlayerID(playerId);
 		} else {

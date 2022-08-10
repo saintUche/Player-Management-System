@@ -4,16 +4,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import pms.com.qa.pms.models.Fans;
 import pms.com.qa.pms.models.MatchData;
 import pms.com.qa.pms.models.Player;
 
 
 
 @Repository
-public interface MatchDataRepository extends JpaRepository<MatchData, Long> {
+public interface FansRepository extends JpaRepository<Fans, Long> {
     
 
-    @Query(value = "SELECT * FROM MatchData WHERE Player_ID = ?1 Limit 1", nativeQuery = true)
-    MatchData findMatchDataByPlayerID(Player playerId);
+    @Query(value = "SELECT * FROM fans WHERE Player = ?1 Limit 1", nativeQuery = true)
+    MatchData findMatchDataByPlayerID(Player player);
 }
 

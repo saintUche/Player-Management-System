@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import pms.com.qa.pms.DTOs.MatchDataDTO;
 import pms.com.qa.pms.exceptions.MatchDataNotFound;
 import pms.com.qa.pms.models.MatchData;
+import pms.com.qa.pms.models.Player;
 import pms.com.qa.pms.repos.MatchDataRepository;
 
 
@@ -43,7 +44,7 @@ public class MatchDataService {
 		return repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
 
-	public MatchData searchPlayerID(String playerId) {
+	public MatchData searchPlayerID(Player playerId) {
 		return repo.findMatchDataByPlayerID(playerId);
 	}
 
