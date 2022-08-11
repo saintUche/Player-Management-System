@@ -51,5 +51,9 @@ public class Player {
 	@Max(110)
 	@NotNull(message="cannot be nul5")
 	private int age;
+
+    public Object thenReturn(Player player) {
+        return null;
+    }
 	
 }
