@@ -20,14 +20,15 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pms.com.qa.pms.DTOs.PlayerDTO;
+import pms.com.qa.pms.DTOs.FansDTO;
+import pms.com.qa.pms.models.Fans;
 import pms.com.qa.pms.models.Player;
 import pms.com.qa.pms.runner.PmsApplication;
 
 @SpringBootTest(classes = PmsApplication.class)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class PlayerTestController {
+public class FansTestController {
 
     @Autowired
 	private MockMvc mock;
@@ -38,23 +39,23 @@ public class PlayerTestController {
 	@Autowired
 	private ObjectMapper jsonifier;
     
-    private PlayerDTO mapToDTO(Player expected) {
-		return mapper.map(expected, PlayerDTO.class);
+    private FansDTO mapToDTO(Fans expected) {
+		return mapper.map(expected, FansDTO.class);
 	}
-
+    private final Player player = new Player(1L, "2", "uche", "egbon", "st", 22);
 	private final Long TEST_ID = 4L;
-	private final Player TEST_PLAYER = new Player(null, "2", "uche", "egbon", "cb", 2);
+	private final Fans TEST_FAN = new Fans(null, player, 5, 10);
 
 	@Test 
 	public void create(){
 
-		Player expected = TEST_PLAYER;
+		Fans expected = TEST_FAN;
 		expected.setID(TEST_ID);
 
 		try {
 
-			mock.perform(post("/player/create").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-					.content(this.jsonifier.writeValueAsString(TEST_PLAYER)))
+			mock.perform(post("/fans/create").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+					.content(this.jsonifier.writeValueAsString(TEST_FAN)))
 
 					.andExpect(status().isOk())
 					.andExpect(content().json(this.jsonifier.writeValueAsString(this.mapToDTO(expected))));
@@ -64,24 +65,28 @@ public class PlayerTestController {
 		}
 	}
 
-	private Object mapToDTO(List<PlayerDTO> expected) {
-		return mapper.map(expected, PlayerDTO.class);
+	private Object mapToDTO(List<FansDTO> expected) {
+		return mapper.map(expected, FansDTO.class);
 	}
 
 
 	@Test
 	public void getAll(){
 
-		PlayerDTO TEST_PLAYER = new PlayerDTO(1L, "uche", "egbon", "2", "st", 22);
+		FansDTO TEST_FAN = new FansDTO(1L, player, 5, 10);
+        Fans TEST_FAN2 = new Fans(1L, player, 10, 5);
 
-		List<PlayerDTO> expected = new ArrayList<>();
-		expected.add(TEST_PLAYER);
-	
+		List<FansDTO> expected = new ArrayList<>();
+		expected.add(TEST_FAN);
+
+		List<Fans> expected2 = new ArrayList<>();
+		expected2.add(TEST_FAN2);
+
 
 		try {
 
-			mock.perform(get("/player/getAll").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-					.content(this.jsonifier.writeValueAsString(TEST_PLAYER)))
+			mock.perform(get("/fans/getAll").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+					.content(this.jsonifier.writeValueAsString(TEST_FAN2)))
 
 					.andExpect(status().isOk())
 					.andExpect(content().json(this.jsonifier.writeValueAsString(this.mapToDTO(expected))));
@@ -94,20 +99,20 @@ public class PlayerTestController {
 	}
 
 
-	@Test
+    @Test
 	public void search(){
 
-		Player TEST_PLAYER = new Player(null, "2", "uche", "egbon", "cb", 2);
+		Fans TEST_FAN = new Fans(1L, player, 5, 10);
 
-		Player expected = TEST_PLAYER;
+		Fans expected = TEST_FAN;
 
 		expected.setID(1l);
 	
 
 		try {
 
-			mock.perform(get("/player/search").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-					.content(this.jsonifier.writeValueAsString(TEST_PLAYER.getFirstName())))
+			mock.perform(get("/fans/search").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+					.content(this.jsonifier.writeValueAsString(TEST_FAN.getPlayer())))
 
 					.andExpect(status().isOk())
 					.andExpect(content().json(this.jsonifier.writeValueAsString(this.mapToDTO(expected))));
@@ -123,15 +128,15 @@ public class PlayerTestController {
     @Test
 	public void delete(){
 		
-		Player TEST_PLAYER = new Player(1L, "2", "uche", "egbon", "cb", 2);
+		Fans TEST_FAN = new Fans(1L, player, 5, 10);
 		
-		Player expected = null;
+		Fans expected = null;
 	
 
 		try {
 
-			mock.perform(post("/player/delete").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-					.content(this.jsonifier.writeValueAsString(TEST_PLAYER.getID())))
+			mock.perform(post("/fans/delete").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+					.content(this.jsonifier.writeValueAsString(TEST_FAN.getID())))
 
 					.andExpect(status().isOk())
 					.andExpect(content().json(this.jsonifier.writeValueAsString(this.mapToDTO(expected))));
@@ -147,14 +152,14 @@ public class PlayerTestController {
 	@Test
 	public void update(){
 
-		Player expected = TEST_PLAYER;
+		Fans expected = TEST_FAN;
 		expected.setID(TEST_ID);
 	
 
 		try {
 
-			mock.perform(post("/player/update").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-					.content(this.jsonifier.writeValueAsString(TEST_PLAYER)))
+			mock.perform(post("/fans/update").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+					.content(this.jsonifier.writeValueAsString(TEST_FAN)))
 
 					.andExpect(status().isOk())
 					.andExpect(content().json(this.jsonifier.writeValueAsString(this.mapToDTO(expected))));
@@ -169,14 +174,14 @@ public class PlayerTestController {
 	@Test
 	public void getOne(){
 
-		Player expected = TEST_PLAYER;
+		Fans expected = TEST_FAN;
 		expected.setID(TEST_ID);
 	
 
 		try {
 
-			mock.perform(post("/player/getOne").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-					.content(this.jsonifier.writeValueAsString(TEST_PLAYER.getID())))
+			mock.perform(get("/fans/getOne").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+					.content(this.jsonifier.writeValueAsString(TEST_FAN.getID())))
 
 					.andExpect(status().isOk())
 					.andExpect(content().json(this.jsonifier.writeValueAsString(this.mapToDTO(expected))));
@@ -189,14 +194,3 @@ public class PlayerTestController {
 	
 
 }
-
-
-
-
-
-
-
-
-
-
-
