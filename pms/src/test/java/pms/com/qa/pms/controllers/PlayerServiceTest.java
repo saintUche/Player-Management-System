@@ -123,19 +123,6 @@ public class PlayerServiceTest {
 	}
 
 
-//	public Player updatePlayer(Long id, Player player) {
-	//	Optional<Player> existingOptional = this.repo.findById(id);
-	//	Player existing = existingOptional.orElse(new Player());
-//
-//		existing.setKitNumber(player.getKitNumber());
-//		existing.setFirstName(player.getFirstName());
-//		existing.setLastName(player.getLastName());
-  ///      existing.setPosition(player.getPosition());
-    //    existing.setAge(player.getAge());
-
-	//return this.repo.save(existing);
-	//}
-
 	@Test
 	public void updatePlayer(){
 
