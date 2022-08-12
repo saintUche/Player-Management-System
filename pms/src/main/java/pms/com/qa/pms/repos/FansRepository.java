@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import pms.com.qa.pms.models.Fans;
-import pms.com.qa.pms.models.MatchData;
 import pms.com.qa.pms.models.Player;
 
 
@@ -15,8 +14,6 @@ public interface FansRepository extends JpaRepository<Fans, Long> {
     
 
     @Query(value = "SELECT * FROM fans WHERE Player = ?1 Limit 1", nativeQuery = true)
-    MatchData findMatchDataByPlayerID(Player player);
-
     Fans findFansByPlayer(Player player);
 }
 
