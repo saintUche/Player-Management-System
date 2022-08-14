@@ -7,8 +7,11 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,8 +26,9 @@ import pms.com.qa.pms.models.Player;
 
 public class PlayerController {
 
+
 	@GetMapping("/player")
-	public String home() {
+	public String home(Model model) {
 		return "home";
 	}
 
@@ -38,40 +42,26 @@ public class PlayerController {
 
 	@GetMapping("/player/getAll")
 	public List<PlayerDTO> getAll() {
-		return service.getAllPlayers();
+		return this.service.getAllPlayers();
 	}
-
-	@GetMapping("/player/search")
-	public Player search(@PathParam("firstName") String firstName, @PathParam("LastName") String lastName) {
-		if (firstName != null) {
-			return service.searchFirstName(firstName);
-		}
-		if (lastName != null) {
-			return service.searchLastName(lastName);
-		} else {
-			return null;
-		}
-
-	}
-
 	@PostMapping("/player/create")
 	public Player create(@RequestBody Player player) {
-		return service.addPlayer(player);
+		return this.service.addPlayer(player);
 	}
 
-	@PostMapping("/player/delete")
+	@DeleteMapping("/player/delete/{id}")
 	public boolean delete(@PathParam("id") Long id) {
-		return service.removePlayer(id);
+		return this.service.removePlayer(id);
 	}
 
-	@PostMapping("/player/update")
+	@PutMapping("/player/update/{id}")
 	public Player update(@PathParam("id") Long id, @RequestBody Player player) {
-		return service.updatePlayer(id, player);
+		return this.service.updatePlayer(id, player);
 	}
 
-	@GetMapping("/player/getOne")
+	@GetMapping("/player/getOne/{id}")
 	public Player getOne(@PathParam("id") Long id) {
-		return service.getOnePlayer(id);
+		return this.service.getOnePlayer(id);
 	}
 
 }

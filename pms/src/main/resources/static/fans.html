@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player information</title>
+    <link rel="stylesheet" href="model.css">
+    <script type="text/javascript" src="fans.js"></script>
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+</head>
+<body onload ="getAll()">
+    <div class="header" >
+        <h1>PMS system</h1>
+        <p>check your player stats</p>
+    </div>
+    
+    <div class="navbar">
+        <a href="player.html">Players</a>
+        <a href="fans.html">Fans</a>
+        <a href="matchdata.html">match data</a>
+    </div>
+    <main>
+        <h2>fans</h2>
+        <button type="button" onclick="openTheForm()">
+            add fan
+        </button>
+        <div id="addfans" class="form">
+            <form  class="form-container">
+                <h2>Add Fan</h2>
+                <label for="player"><b>player:</b></label>
+                <input type="text" id="player" required>
+                <label for="haters"><b>haters:</b></label>
+                <input type="text" id="haters"  required>
+                <label for="supporters"><b>supporters:</b></label>
+                <input type="text" id="supporters"  required>
+                <button type="submit" class="btn" onclick="create()">add fan</button>
+                <button type="button" class="btn cancel" onclick="closeAddForm()">Close</button>
+            </form>
+        </div>
+        <button type="button" onclick="openUpdateForm()">
+            update fan
+        </button>
+        <div id="updateplayer" class="form">
+            <form  class="form-container">
+                <h2>Update fan</h2>
+                <label for="player"><b>player:</b></label>
+                <input type="text" id="player" required>
+                <label for="haters"><b>haters:</b></label>
+                <input type="text" id="haters"  required>
+                <label for="supporters"><b>supporters:</b></label>
+                <input type="text" id="supporters"  required>
+                <button type="submit" class="btn" onclick="update()">update fan</button>
+                <button type="button" class="btn cancel" onclick="closeUpdateForm()">Close</button>
+            </form>
+        </div>
+        <button type="button" onclick="openDeleteForm()">
+            delete fan
+        </button>
+        <div id="deleteplayer" class="form">
+            <form  class="form-container">
+                <h2>delete fan</h2>
+                <label for="fansId"><b>fan ID</b></label>
+                <input type="text" id="playerId" required>
+                <button type="submit" class="btn" onclick="deletePlayer()">delete fan</button>
+                <button type="button" class="btn cancel" onclick="closeDeleteForm()">Close</button>
+            </form>
+        </div>
+        <table id="fans" class="table table-dark table-striped table-hover">
+            <thead id="fans-table-head">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">player</th>
+                    <th scope="col">haters</th>
+                    <th scope="col">supporters</th>
+                </tr>
+            </thead>
+            <tbody id="fans-table-body">
+                
+            </tbody>
+        </table>  
+</body>
+</html>
+

@@ -2,6 +2,7 @@ package pms.com.qa.pms.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -94,32 +95,6 @@ public class PlayerTestController {
 	}
 
 
-	@Test
-	public void search(){
-
-		Player TEST_PLAYER = new Player(null, "2", "uche", "egbon", "cb", 2);
-
-		Player expected = TEST_PLAYER;
-
-		expected.setID(1l);
-	
-
-		try {
-
-			mock.perform(get("/player/search").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-					.content(this.jsonifier.writeValueAsString(TEST_PLAYER.getFirstName())))
-
-					.andExpect(status().isOk())
-					.andExpect(content().json(this.jsonifier.writeValueAsString(this.mapToDTO(expected))));
-
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-
-    
     @Test
 	public void delete(){
 		
@@ -130,7 +105,7 @@ public class PlayerTestController {
 
 		try {
 
-			mock.perform(post("/player/delete").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+			mock.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete("player/delete/" + TEST_PLAYER.getID()).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
 					.content(this.jsonifier.writeValueAsString(TEST_PLAYER.getID())))
 
 					.andExpect(status().isOk())
@@ -153,7 +128,7 @@ public class PlayerTestController {
 
 		try {
 
-			mock.perform(post("/player/update").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+			mock.perform(put("/player/update/"+ TEST_PLAYER.getID()).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
 					.content(this.jsonifier.writeValueAsString(TEST_PLAYER)))
 
 					.andExpect(status().isOk())
@@ -175,7 +150,7 @@ public class PlayerTestController {
 
 		try {
 
-			mock.perform(post("/player/getOne").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+			mock.perform(post("/player/getOne/"+ TEST_PLAYER.getID()).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
 					.content(this.jsonifier.writeValueAsString(TEST_PLAYER.getID())))
 
 					.andExpect(status().isOk())

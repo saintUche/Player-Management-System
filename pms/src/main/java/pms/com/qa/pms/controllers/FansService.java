@@ -41,9 +41,6 @@ public class FansService {
 		return repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
 
-	public Fans searchPlayer(Player player) {
-		return repo.findFansByPlayer(player);
-	}
 
 	public Fans getOneFans(long id) {
 		return repo.findById(id).orElseThrow(FansNotFound::new);

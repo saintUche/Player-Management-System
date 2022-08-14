@@ -71,41 +71,6 @@ public class PlayerServiceTest {
 	}
 
 
-
-
-	@Test 
-	public void searchFirstName(){
-
-		Player player = new Player(1L, "2", "uche", "egbon", "st", 22);
-
-		Mockito.when(this.repo.findPlayerByFirstName("uche")).thenReturn(player);
-
-		assertEquals(service.searchFirstName("uche"), player);
-
-		Mockito.verify(this.repo, Mockito.times(1)).findPlayerByFirstName(player.getFirstName());
-
-
-	}
-
-	public Player searchLastName(String lastName) {
-		return repo.findPlayerByLastName(lastName);
-	}
-
-
-	@Test 
-	public void searchLastName(){
-
-		Player player = new Player(1L, "2", "uche", "egbon", "st", 22);
-
-		Mockito.when(this.repo.findPlayerByFirstName("egbon")).thenReturn(player);
-
-		assertEquals(service.searchFirstName("egbon"), player);
-
-		Mockito.verify(this.repo, Mockito.times(1)).findPlayerByFirstName(player.getLastName());
-
-
-	}
-
 	public Player getOnePlayer(long id) {
 		return repo.findById(id).orElseThrow(PlayerNotFound::new);
 	}

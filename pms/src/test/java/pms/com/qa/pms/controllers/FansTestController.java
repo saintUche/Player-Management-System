@@ -99,31 +99,6 @@ public class FansTestController {
 	}
 
 
-    @Test
-	public void search(){
-
-		Fans TEST_FAN = new Fans(1L, player, 5, 10);
-
-		Fans expected = TEST_FAN;
-
-		expected.setID(1l);
-	
-
-		try {
-
-			mock.perform(get("/fans/search").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-					.content(this.jsonifier.writeValueAsString(TEST_FAN.getPlayer())))
-
-					.andExpect(status().isOk())
-					.andExpect(content().json(this.jsonifier.writeValueAsString(this.mapToDTO(expected))));
-
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-
     
     @Test
 	public void delete(){
@@ -135,7 +110,7 @@ public class FansTestController {
 
 		try {
 
-			mock.perform(post("/fans/delete").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+			mock.perform(post("/fans/delete/"+TEST_FAN.getID()).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
 					.content(this.jsonifier.writeValueAsString(TEST_FAN.getID())))
 
 					.andExpect(status().isOk())
@@ -158,7 +133,7 @@ public class FansTestController {
 
 		try {
 
-			mock.perform(post("/fans/update").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+			mock.perform(post("/fans/update/" + TEST_FAN.getID()).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
 					.content(this.jsonifier.writeValueAsString(TEST_FAN)))
 
 					.andExpect(status().isOk())
@@ -180,7 +155,7 @@ public class FansTestController {
 
 		try {
 
-			mock.perform(get("/fans/getOne").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+			mock.perform(get("/fans/getOne/"+TEST_FAN.getID()).accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
 					.content(this.jsonifier.writeValueAsString(TEST_FAN.getID())))
 
 					.andExpect(status().isOk())

@@ -1,0 +1,71 @@
+/* Style the header */
+.header {
+    padding: 80px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+  }
+  
+  /* Increase the font size of the h1 element */
+  .header h1 {
+    font-size: 40px;
+  }
+
+/* Style the top navigation bar */
+.navbar {
+    overflow: hidden; /* Hide overflow */
+    background-color: #333; /* Dark background color */
+  }
+  
+  /* Style the navigation bar links */
+  .navbar a {
+    float: left; /* Make sure that the links stay side-by-side */
+    display: block; /* Change the display to block, for responsive reasons (see below) */
+    color: white; /* White text color */
+    text-align: center; /* Center the text */
+    padding: 14px 20px; /* Add some padding */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  /* Right-aligned link */
+  .navbar a.right {
+    float: right; /* Float a link to the right */
+  }
+  
+  /* Change color on hover/mouse-over */
+  .navbar a:hover {
+    background-color: #ddd; /* Grey background color */
+    color: black; /* Black text color */
+  }
+
+  /* The popup form - hidden by default */
+.form {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    max-height: fit-content;
+  }
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+    max-height: fit-content;
+}
+
+.form-container input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+  }
+  
+ .form-container input[type=text]:focus {
+    background-color: lightblue;
+  }
+

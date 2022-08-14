@@ -73,20 +73,6 @@ public class FansServiceTest {
 
 
 
-	@Test 
-	public void searchPlayer(){
-
-        Player player = new Player(1L, "2", "uche", "egbon", "st", 22);
-		Fans fan = new Fans(1L, player, 5, 10);
-
-		Mockito.when(this.repo.findFansByPlayer(player)).thenReturn(fan);
-
-		assertEquals(service.searchPlayer(player), fan);
-
-		Mockito.verify(this.repo, Mockito.times(1)).findFansByPlayer(fan.getPlayer());
-
-
-	}
 
 
 

@@ -41,32 +41,23 @@ public class FansController {
 		return service.getAllFanss();
 	}
 
-	@GetMapping("/fans/search")
-	public Fans search(@PathParam("player") Player player) {
-		if (player != null) {
-			return service.searchPlayer(player);
-		}
-         else {
-			return null;
-		}
-	}
 
 	@PostMapping("/fans/create")
 	public Fans create(@RequestBody Fans fans) {
 		return service.addFans(fans);
 	}
 
-	@PostMapping("/fans/delete")
+	@PostMapping("/fans/delete/{id}")
 	public boolean delete(@PathParam("id") Long id) {
 		return service.removeFans(id);
 	}
 
-	@PostMapping("/fans/update")
+	@PostMapping("/fans/update/{id}")
 	public Fans update(@PathParam("id") Long id, @RequestBody Fans fans) {
 		return service.updateFans(id, fans);
 	}
 
-	@GetMapping("/fans/getOne")
+	@GetMapping("/fans/getOne/{id}")
 	public Fans getOne(@PathParam("id") Long id) {
 		return service.getOneFans(id);
 	}

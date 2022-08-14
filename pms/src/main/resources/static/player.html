@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player information</title>
+    <link rel="stylesheet" href="model.css">
+    <script type="text/javascript" src="player.js"></script>
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+</head>
+<body onload ="getAll()">
+    <div class="header" >
+        <h1>PMS system</h1>
+        <p>check your player stats</p>
+    </div>
+    
+    <div class="navbar">
+        <a href="player.html">Players</a>
+        <a href="fans.html">Fans</a>
+        <a href="matchdata.html">match data</a>
+    </div>
+    <main>
+        <h2>Players</h2>
+        <button type="button" onclick="openTheForm()">
+            add player
+        </button>
+        <div id="addplayer" class="form">
+            <form  class="form-container">
+                <h2>Add Player</h2>
+                <label for="firstName"><b>first name:</b></label>
+                <input type="text" id="firstName" required>
+                <label for="lastName"><b>last name:</b></label>
+                <input type="text" id="lastName"  required>
+                <label for="kitNumber"><b>kit number:</b></label>
+                <input type="text" id="kitNumber"  required>
+                <label for="position"><b>position:</b></label>
+                <input type="text" id="position"  required>
+                <label for="age"><b>age:</b></label>
+                <input type="text" id="age" required>
+                <button type="submit" class="btn" onclick="create()">add player</button>
+                <button type="button" class="btn cancel" onclick="closeAddForm()">Close</button>
+            </form>
+        </div>
+        <button type="button" onclick="openUpdateForm()">
+            update player
+        </button>
+        <div id="updateplayer" class="form">
+            <form  class="form-container">
+                <h2>update Player</h2>
+                <label for="playerId"><b>Player ID</b></label>
+                <input type="text" id="playerId" required>
+                <label for="firstName"><b>first name:</b></label>
+                <input type="text" id="firstName" required>
+                <label for="lastName"><b>last name:</b></label>
+                <input type="text" id="lastName"  required>
+                <label for="kitNumber"><b>kit number:</b></label>
+                <input type="text" id="kitNumber"  required>
+                <label for="position"><b>position:</b></label>
+                <input type="text" id="position"  required>
+                <label for="age"><b>age:</b></label>
+                <input type="text" id="age" required>
+                <button type="submit" class="btn" onclick="update()">update player</button>
+                <button type="button" class="btn cancel" onclick="closeUpdateForm()">Close</button>
+            </form>
+        </div>
+        <button type="button" onclick="openDeleteForm()">
+            delete player
+        </button>
+        <div id="deleteplayer" class="form">
+            <form  class="form-container">
+                <h2>delete Player</h2>
+                <label for="playerId"><b>Player ID</b></label>
+                <input type="text" id="playerId" required>
+                <button type="submit" class="btn" onclick="deletePlayer()">delete player</button>
+                <button type="button" class="btn cancel" onclick="closeDeleteForm()">Close</button>
+            </form>
+        </div>
+        <table id="players" class="table table-dark table-striped table-hover">
+            <thead id="player-table-head">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">first name</th>
+                    <th scope="col">last name</th>
+                    <th scope="col">kit number</th>
+                    <th scope="col">position</th>
+                    <th scope="col">age</th>
+                </tr>
+            </thead>
+            <tbody id="player-table-body">
+                
+            </tbody>
+        </table>  
+</body>
+</html>
+

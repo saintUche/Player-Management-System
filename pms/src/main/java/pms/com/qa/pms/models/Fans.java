@@ -26,7 +26,7 @@ public class Fans {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ID;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = true)
+    @OneToOne(cascade = CascadeType.MERGE, optional = true)
 	@JoinColumn(name="player", referencedColumnName="ID", nullable=true)
 	private Player player; 
 

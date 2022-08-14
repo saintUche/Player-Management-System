@@ -38,19 +38,11 @@ public class PlayerService {
 	}
 
 	public List<PlayerDTO> getAllPlayers() {
-		return repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
-	}
-
-	public Player searchFirstName(String firstName) {
-		return repo.findPlayerByFirstName(firstName);
-	}
-
-	public Player searchLastName(String lastName) {
-		return repo.findPlayerByLastName(lastName);
+		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
 
 	public Player getOnePlayer(long id) {
-		return repo.findById(id).orElseThrow(PlayerNotFound::new);
+		return this.repo.findById(id).orElseThrow(PlayerNotFound::new);
 	}
 
 	public Player updatePlayer(Long id, Player player) {
@@ -67,12 +59,13 @@ public class PlayerService {
 	}
 
 	public boolean removePlayer(Long id) {
-		repo.deleteById(id);
+		this.repo.deleteById(id);
 		boolean exists = this.repo.existsById(id);
 		if (exists == false) {
 			throw new PlayerNotFound();
 		}
 		return !exists;
 	}
+	
 
 }
