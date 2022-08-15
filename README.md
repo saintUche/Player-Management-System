@@ -82,6 +82,10 @@ A pop up box opens for each crud function. Here the example is to add player.
 
 When the player is added it shows up on the screen
 
+
+### Note
+The only crud methods that work are get all and create. I had diffculties impelementing the others
+
 ## Links 
 
 * **Jira** - https://ucheegbon.atlassian.net/jira/software/projects/IMS2/settings/details
@@ -97,13 +101,5 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Uche Egbon** - *Initial work* - [christophperrins](https://github.com/christophperrins)
-
-## License
-
-This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
-
-*For help in [Choosing a license](https://choosealicense.com/)*
-
-## Acknowledgments
+* **Uche Egbon** 
 
