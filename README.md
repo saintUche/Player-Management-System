@@ -23,14 +23,19 @@ Got to master branch for files
 
 The logic for the ER diagram is as follows.
 
+![image](https://user-images.githubusercontent.com/79328765/184562508-23a6bf8b-3858-43e0-8a47-231d09b548f3.png)
+
+
+
 A Player has an ID and attributes, the player also has information on their match data and information on their fans. 
+
 
 
 ### CI interface
 
 In addition to the above requirements, the project required the implementation of several stages of a typical CI pipeline. These were project tracking, version control, development environment and build server. For project tracking agile was used to create a Kanban board. Story points and labels were assigned to each item. Here is a look at a the kanban board created when a sprint for item section was created.
 
-##add jira image
+https://github.com/saintUche/pms/blob/master/project%202%20images/jira.png
 
 For version control, git was used, with the project repository hosted on github. Version control via git allows changes to the project to be made and committed whilst keeping the commit history for access to earlier versions. GitHub as a repository hosting service allows the repository to be stored away from the development environment, as well as providing webhooks, which send http POST requests to the build server to automate building and testing.
 
@@ -64,25 +69,30 @@ EqualsVerifier was used to test the class methods.
 Selenium was also attempted but not fully complete 
 
 
-###test coverage image
+![image](https://user-images.githubusercontent.com/79328765/184562540-dfab56c8-a178-405a-a226-d14c63852189.png)
+
 
 
 ### The PMS System
 
 This is the home page.
 
+![image](https://user-images.githubusercontent.com/79328765/184562557-a4ca12f6-8530-4500-a105-281a2ad6a685.png)
 
 
 If we selected an entity for examaple players, it takes us to the players page.
 Each player had buttons for crud functions 
 
+![image](https://user-images.githubusercontent.com/79328765/184562575-c0411656-0040-4ca5-882b-576f05412b4b.png)
 
 
 
 A pop up box opens for each crud function. Here the example is to add player.
 
+![image](https://user-images.githubusercontent.com/79328765/184562592-b9f7e7a6-e311-4cfd-b551-b706929ed40c.png)
 
 When the player is added it shows up on the screen
+![image](https://user-images.githubusercontent.com/79328765/184562599-4c21e89c-706d-4f5b-9035-b7f13c8bd22c.png)
 
 
 ### Note
