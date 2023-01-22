@@ -1,5 +1,6 @@
 # Player management system 
 
+Go to master branch for files
 This repository contains my deliverable for the QA Software Core - Practical Project
 
 ### Project brief 
@@ -18,7 +19,7 @@ More specifically, you are required to create a full-stack web application follo
 
 UML design shows how classes are related. First the model must be defined, then the model DTO class is used to pass data in one shot from the client to the sever. The player service file contains the defined crud functions and the controller sets up the api which the user has access to. 
 
-Got to master branch for files
+Go to master branch for files
 
 
 The logic for the ER diagram is as follows.
